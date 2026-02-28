@@ -22,12 +22,12 @@ export default async function handler(req, res) {
 
     const payload = rawBody ? JSON.parse(rawBody) : {};
 
-    console.log("Chatwoot webhook received RAW:", rawBody);
-    console.log("Chatwoot webhook parsed:", {
+    console.log("Chatwoot webhook received:", {
       event: payload?.event,
       messageType: payload?.message?.message_type,
       content: payload?.message?.content,
-      conversationId: payload?.conversation?.id
+      conversationId: payload?.conversation?.id,
+      messageId: payload?.message?.id
     });
 
     return res.status(200).json({ ok: true });
